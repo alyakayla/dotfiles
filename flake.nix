@@ -2,7 +2,8 @@
   description = "~ kayla's nixos config. specs: Acer Predator Helios 300 (i7-10750H + RTX 2060 Max-Q), niri, gaming";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11"; 
 
     home-manager = {
       url = "github:nix-community/home-manager";
