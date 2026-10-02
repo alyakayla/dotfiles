@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.aagl.nixosModules.default ];
+
+  # An Anime Game Launcher. The module also adds /etc/hosts entries that block
+  # the game's telemetry servers.
+  programs.anime-game-launcher.enable = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

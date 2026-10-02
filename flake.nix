@@ -1,8 +1,7 @@
 {
-  description = "NixOS — Acer Predator Helios 300 (i7-10750H + RTX 2060 Max-Q), niri, gaming";
+  description = "~ kayla's nixos config. specs: Acer Predator Helios 300 (i7-10750H + RTX 2060 Max-Q), niri, gaming";
 
   inputs = {
-    # Unstable: newest NVIDIA drivers, Mesa, Proton, niri and app versions — best for gaming.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -17,19 +16,22 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # Noctalia v5 — the desktop shell (bar, launcher, notifications, lock screen, wallpaper)
+    # noctalia, the desktop shell (bar, launcher, notifications, lock screen, wallpaper)
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Spotifast — native Rust Spotify client (community flake, not in NUR/nixpkgs)
+    # native Rust Spotify client (community flake)
     spotifast.url = "github:tomsch/spotifast-nix";
+
+    # anime game launcher
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      username = "kayla"; # CHANGE ME if you want a different login name
+      username = "kayla"; # change your username here
     in
     {
       nixosConfigurations.helios = nixpkgs.lib.nixosSystem {

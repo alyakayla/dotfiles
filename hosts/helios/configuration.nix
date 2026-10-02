@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # Generated on the laptop by `nixos-generate-config` — copy it in before installing.
+    # Generated on the laptop by `nixos-generate-config`, copy it in before installing.
     ./hardware-configuration.nix
     ./nvidia.nix
     ./gaming.nix
@@ -12,23 +12,29 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
-    # Prebuilt Noctalia binaries
-    extra-substituters = [ "https://noctalia.cachix.org" ];
-    extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
+    # prebuilt binaries for Noctalia and An Anime Game Launcher
+    extra-substituters = [
+      "https://noctalia.cachix.org"
+      "https://ezkea.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+    ];
   };
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
-  nixpkgs.config.allowUnfree = true; # nvidia, steam, claude-code, ...
+  nixpkgs.config.allowUnfree = true;
 
   # ---------------------------------------------------------------- Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Newest kernel for best hardware/gaming support. If the NVIDIA driver ever
+  # Newest kernel for best hardware/gaming support. if the NVIDIA driver ever
   # fails to build against it, drop this line to fall back to the default LTS
   # kernel. `pkgs.linuxPackages_zen` is a gaming-tuned alternative.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -37,7 +43,7 @@
   networking.hostName = "helios";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "UTC"; # CHANGE ME, e.g. "Europe/Berlin"
+  time.timeZone = "UTC"; # CHANGE ME
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 
@@ -46,15 +52,12 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  # Laptop power/thermals (don't combine power-profiles-daemon with TLP).
-  # NetworkManager, Bluetooth, power-profiles-daemon and upower also back
-  # Noctalia's control-center toggles.
   services.thermald.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   services.fwupd.enable = true;
 
-  # Audio
+  # audio
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -64,7 +67,7 @@
     jack.enable = true;
   };
 
-  # ---------------------------------------------------------------- niri
+  # ~ niri
   programs.niri.enable = true; # also sets up xdg-desktop-portal-gnome + session file
 
   services.greetd = {
