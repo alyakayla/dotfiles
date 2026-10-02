@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./nvidia.nix
     ./gaming.nix
+    ./fans.nix
   ];
 
   # ---------------------------------------------------------------- Nix

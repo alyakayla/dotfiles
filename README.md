@@ -31,4 +31,4 @@ After reboot:
   `Super+B` Zen, `Super+S` Steam, `Super+O` overview, `Super+Alt+L` lock,
   `Super+Shift+S` screenshot, `Super+Shift+C` keep-awake (for long games/cutscenes),
   `Super+Shift+/` cheat sheet.
-- i usually use `nbfc-linux` to manage my laptop's fans.
+- fans: `nbfc-linux` runs as a service with the PH315-53 profile (`hosts/helios/fans.nix`). `nbfc status`, `nbfc set -s 100`, `nbfc set -a`.
