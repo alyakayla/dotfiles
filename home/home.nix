@@ -29,8 +29,8 @@ in
   };
 
   home.packages = with pkgs; [
-    inputs.spotifast.packages.${system}.spotifast # native Spotify client
-    # spotify                                     # official client
+    #inputs.spotifast.packages.${system}.spotifast # native Spotify client
+    spotify                                     # official client
 
     claude-code
     opencode
