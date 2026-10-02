@@ -6,7 +6,6 @@ in
 {
   imports = [
     inputs.zen-browser.homeModules.beta
-    inputs.noctalia.homeModules.default
   ];
 
   home.username = username;
