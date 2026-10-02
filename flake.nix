@@ -24,11 +24,12 @@
     };
 
     # native Rust Spotify client (community flake)
-    spotifast.url = "github:tomsch/spotifast-nix";
+    #spotifast.url = "github:tomsch/spotifast-nix";
 
     # anime game launcher
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
+    aagl.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
