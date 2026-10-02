@@ -72,7 +72,7 @@ in
 
   home.pointerCursor.enable = true;
   home.pointerCursor = {
-    package = pkgs.adwait-icon-theme;
+    package = pkgs.adwaita-icon-theme;
     name = "Adwaita";
     size = 24;
     gtk.enable = true;
