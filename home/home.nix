@@ -21,6 +21,14 @@ in
 
   programs.herdr.enable = true;
 
+  # zed editor (launch with `zeditor`)
+  programs.zed-editor = {
+    enable = true;
+    extensions = [ "nix" ];
+    # nix language server + formatter, only on zed's PATH
+    extraPackages = with pkgs; [ nixd nixfmt ];
+  };
+
   home.packages = with pkgs; [
     inputs.spotifast.packages.${system}.spotifast # native Spotify client
     # spotify                                     # official client
