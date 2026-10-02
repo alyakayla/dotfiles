@@ -28,8 +28,9 @@
 
     # anime game launcher
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-  };
     aagl.inputs.nixpkgs.follows = "nixpkgs";
+  };       
+   
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
